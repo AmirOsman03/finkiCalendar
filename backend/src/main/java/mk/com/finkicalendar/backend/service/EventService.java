@@ -1,0 +1,40 @@
+package mk.com.finkicalendar.backend.service;
+
+import mk.com.finkicalendar.backend.model.Event;
+import mk.com.finkicalendar.backend.model.User;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public interface EventService {
+
+    Event createEvent (
+            String title,
+            String description,
+            String location,
+            String laboratory,
+            LocalDateTime startTime,
+            LocalDateTime endTime
+    );
+
+    Event updateEvent (
+            Long id,
+            String title,
+            String description,
+            String location,
+            String laboratory,
+            LocalDateTime startTime,
+            LocalDateTime endTime
+    );
+
+    void deleteEvent(Long id);
+
+    List<Event> findAll();
+
+    Event addParticipant(Long eventId, User user);
+
+    Event removeParticipant(Long eventId, User user);
+
+    Event findById(Long id);
+
+}
