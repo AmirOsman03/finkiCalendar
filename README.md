@@ -16,11 +16,10 @@ A centralized event calendar for the Faculty of Computer Science and Engineering
   - Events include title, description, location, laboratory, and time
 
 - ✅ **Event Participation**  
-  - Students can sign up or leave events  
-  - View personal and global event schedule
+  - Students view events
 
 - 🛡 **Role-Based Access Control**  
-  - `ROLE_STUDENT`: view and sign up for events  
+  - `ROLE_STUDENT`: view for events  
   - `ROLE_PROFESSOR`: create and manage events  
   - `ROLE_ADMIN`: access all endpoints
 
@@ -31,6 +30,6 @@ A centralized event calendar for the Faculty of Computer Science and Engineering
 - **Backend**: Spring Boot (OAuth2, Spring Security, JPA)  
 - **Frontend**: React + Tailwind CSS  
 - **Database**: PostgreSQL  
-- **Auth**: Google OAuth2 + JWT  
+- **Auth**: Google OAuth2
 - **API Docs**: SpringDoc OpenAPI  
 - **Deployment**: Docker & Docker Compose
