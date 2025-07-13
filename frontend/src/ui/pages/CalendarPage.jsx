@@ -37,7 +37,7 @@ const CalendarPage = () => {
                         </button>
                     )}
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                     {user ? (
                         <div className="flex items-center space-x-4 bg-green-100 text-green-800 px-4 py-2 rounded-lg">
@@ -61,7 +61,7 @@ const CalendarPage = () => {
                 </div>
             </div>
             <CalendarView/>
-            <AddCalendarDialog 
+            <AddCalendarDialog
                 isOpen={isDialogOpen}
                 onClose={() => setIsDialogOpen(false)}
                 onAdd={onAdd}

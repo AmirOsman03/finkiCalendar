@@ -29,11 +29,18 @@ const useEvents = () => {
             .catch((error) => console.log(error))
     }, [fetchEvents])
 
+    const onEdit = useCallback((id, eventData) => {
+        eventRepository
+            .updateEvent(id, eventData)
+            .then(() => fetchEvents())
+            .catch((error) => console.log(error))
+    }, [fetchEvents])
+
     useEffect(() => {
         fetchEvents();
     }, [fetchEvents]);
 
-    return {...state, onAdd: onAdd};
+    return {...state, onAdd: onAdd, onEdit: onEdit};
 };
 
 export default useEvents;
