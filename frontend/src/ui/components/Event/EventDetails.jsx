@@ -6,9 +6,11 @@ import {GoArrowLeft} from "react-icons/go";
 import {FiEdit} from "react-icons/fi";
 import EditCalendarDialog from '../EditCalendarDialog/EditCalendarDialog.jsx';
 import useEvents from "../../../hooks/useEvents.js";
+import useAuth from "../../../hooks/useAuth.js";
 
 const EventDetailsPage = () => {
     const {id} = useParams();
+    const {user} = useAuth();
     const navigate = useNavigate();
     const {onEdit} = useEvents();
     const {event} = useEventDetails(id);
@@ -34,15 +36,17 @@ const EventDetailsPage = () => {
                     </div>
 
                     {/* Edit Button positioned above the card */}
-                    <div className="flex justify-start mb-4">
-                        <button
-                            onClick={() => setEditDialogOpen(true)}
-                            className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center"
-                        >
-                            <FiEdit className="w-4 h-4 mr-2" />
-                            Edit Event
-                        </button>
-                    </div>
+                    {user && (
+                        <div className="flex justify-start mb-4">
+                            <button
+                                onClick={() => setEditDialogOpen(true)}
+                                className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center"
+                            >
+                                <FiEdit className="w-4 h-4 mr-2"/>
+                                Edit Event
+                            </button>
+                        </div>
+                    )}
 
                     <div className="bg-white rounded-xl shadow-lg p-8">
                         <div className="space-y-6">
@@ -103,7 +107,7 @@ const EventDetailsPage = () => {
                     </div>
                 </div>
             </div>
-            
+
             <EditCalendarDialog
                 isOpen={editDialogOpen}
                 onClose={() => setEditDialogOpen(false)}
@@ -111,7 +115,8 @@ const EventDetailsPage = () => {
                 onUpdate={(updatedData) => onEdit(id, updatedData)}
             />
         </>
-    );
+    )
+        ;
 };
 
 export default EventDetailsPage;
