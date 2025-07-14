@@ -10,15 +10,7 @@ public interface EventService {
 
     Event createEvent (Event event);
 
-    Event updateEvent (
-            Long id,
-            String title,
-            String description,
-            String location,
-            String laboratory,
-            LocalDateTime startTime,
-            LocalDateTime endTime
-    );
+    Event updateEvent (Long id, Event event);
 
     void deleteEvent(Long id);
 

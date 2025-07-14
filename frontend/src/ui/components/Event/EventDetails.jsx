@@ -3,18 +3,20 @@ import {useParams, useNavigate} from 'react-router';
 import useEventDetails from '../../../hooks/useEventDetails.js';
 import {format} from 'date-fns';
 import {GoArrowLeft} from "react-icons/go";
-import {FiEdit} from "react-icons/fi";
+import {FiEdit, FiTrash} from "react-icons/fi";
 import EditCalendarDialog from '../EditCalendarDialog/EditCalendarDialog.jsx';
 import useEvents from "../../../hooks/useEvents.js";
 import useAuth from "../../../hooks/useAuth.js";
+import DeleteCalendarDialog from "../DeleteCalendarDialog/DeleteCalendarDialog.jsx";
 
 const EventDetailsPage = () => {
     const {id} = useParams();
     const {user} = useAuth();
     const navigate = useNavigate();
-    const {onEdit} = useEvents();
+    const {onEdit, onDelete} = useEvents();
     const {event} = useEventDetails(id);
     const [editDialogOpen, setEditDialogOpen] = useState(false);
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
     if (!event) return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -44,6 +46,13 @@ const EventDetailsPage = () => {
                             >
                                 <FiEdit className="w-4 h-4 mr-2"/>
                                 Edit Event
+                            </button>
+                            <button
+                                onClick={() => setDeleteDialogOpen(true)}
+                                className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center"
+                            >
+                                <FiTrash className="w-4 h-4 mr-2"/>
+                                Delete Event
                             </button>
                         </div>
                     )}
@@ -114,9 +123,14 @@ const EventDetailsPage = () => {
                 event={event}
                 onUpdate={(updatedData) => onEdit(id, updatedData)}
             />
+            <DeleteCalendarDialog
+                isOpen={deleteDialogOpen}
+                onClose={() => setDeleteDialogOpen(false)}
+                onDelete={() => onDelete(id)}
+                event = {event}
+            />
         </>
-    )
-        ;
+    );
 };
 
 export default EventDetailsPage;

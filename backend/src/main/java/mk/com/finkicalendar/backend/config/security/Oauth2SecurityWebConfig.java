@@ -39,18 +39,19 @@ public class Oauth2SecurityWebConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/", "/login**", "/error", "/api/public/**",
-                                "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**",
-                                "/api/events", "/api/events/{eventId}"
-                        ).permitAll()
-                        .requestMatchers("/api/users/me").authenticated()
-                        .requestMatchers(
-                                "/api/events/create", "/api/events/delete/**",
-                                "/api/events/edit/**", "/api/events/{eventId}/signUp",
-                                "/api/events/{eventId}/leave"
-                        ).hasRole("PROFESSOR")
-                        .anyRequest().hasRole("ADMIN")
+//                        .requestMatchers(
+//                                "/", "/login**", "/error", "/api/public/**",
+//                                "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**",
+//                                "/api/events", "/api/events/{eventId}"
+//                        ).permitAll()
+//                        .requestMatchers("/api/users/me").authenticated()
+//                        .requestMatchers(
+//                                "/api/events/create", "/api/events/delete/**",
+//                                "/api/events/edit/**", "/api/events/{eventId}/signUp",
+//                                "/api/events/{eventId}/leave"
+//                        ).hasRole("PROFESSOR")
+//                        .anyRequest().hasRole("ADMIN")
+                                .anyRequest().permitAll()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .successHandler(customSuccessHandler())

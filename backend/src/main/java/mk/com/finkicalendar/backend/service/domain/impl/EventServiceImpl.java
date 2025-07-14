@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -25,26 +26,16 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event updateEvent (
-            Long eventId,
-            String title,
-            String description,
-            String location,
-            String laboratory,
-            LocalDateTime startTime,
-            LocalDateTime endTime
-    ) {
-        Event event = eventRepository.findById(eventId)
+    public Event updateEvent (Long eventId, Event event) {
+        Event existingEvent = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found"));
-
-        event.setTitle(title);
-        event.setDescription(description);
-        event.setLocation(location);
-        event.setLaboratory(laboratory);
-        event.setStartTime(startTime);
-        event.setEndTime(endTime);
-
-        return eventRepository.save(event);
+        existingEvent.setTitle(event.getTitle());
+        existingEvent.setDescription(event.getDescription());
+        existingEvent.setLocation(event.getLocation());
+        existingEvent.setLaboratory(event.getLaboratory());
+        existingEvent.setStartTime(event.getStartTime());
+        existingEvent.setEndTime(event.getEndTime());
+        return eventRepository.save(existingEvent);
     }
 
     @Override

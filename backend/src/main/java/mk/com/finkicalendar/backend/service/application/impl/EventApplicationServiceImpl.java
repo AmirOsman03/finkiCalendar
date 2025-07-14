@@ -22,4 +22,9 @@ public class EventApplicationServiceImpl implements EventApplicationService {
         return eventService.createEvent(event.toEvent());
     }
 
+    @Override
+    public Event updateEvent(Long id, CreateEventDto event) {
+        return eventService.updateEvent(id, event.toEvent());
+    }
+
 }

@@ -25,22 +25,38 @@ const useEvents = () => {
     const onAdd = useCallback((eventData) => {
         eventRepository
             .createEvent(eventData)
-            .then(() => fetchEvents())
+            .then(() => {
+                console.log(`Successfully added the event!`);
+                fetchEvents();
+            })
             .catch((error) => console.log(error))
-    }, [fetchEvents])
+    }, [fetchEvents]);
 
     const onEdit = useCallback((id, eventData) => {
         eventRepository
             .updateEvent(id, eventData)
-            .then(() => fetchEvents())
+            .then(() => {
+                console.log(`Successfully updated the event with ID ${id}.`);
+                fetchEvents();
+            })
             .catch((error) => console.log(error))
-    }, [fetchEvents])
+    }, [fetchEvents]);
+
+    const onDelete = useCallback((id) => {
+        eventRepository
+            .deleteEvent(id)
+            .then(() => {
+                console.log(`Successfully deleted the event with ID ${id}.`);
+                fetchEvents();
+            })
+            .catch((error) => console.log(error));
+    }, [fetchEvents]);
 
     useEffect(() => {
         fetchEvents();
     }, [fetchEvents]);
 
-    return {...state, onAdd: onAdd, onEdit: onEdit};
+    return {...state, onAdd: onAdd, onEdit: onEdit, onDelete: onDelete};
 };
 
 export default useEvents;

@@ -33,24 +33,8 @@ public class EventController {
     }
 
     @PutMapping("/edit/{eventId}")
-    public Event editEvent(
-            @PathVariable Long eventId,
-            @RequestParam String title,
-            @RequestParam String description,
-            @RequestParam String location,
-            @RequestParam String laboratory,
-            @RequestParam String start,
-            @RequestParam String end
-    ) {
-        return eventService.updateEvent(
-                eventId,
-                title,
-                description,
-                location,
-                laboratory,
-                LocalDateTime.parse(start),
-                LocalDateTime.parse(end)
-        );
+    public ResponseEntity<Event> editEvent(@PathVariable Long eventId, @RequestBody CreateEventDto event) {
+        return ResponseEntity.ok(eventApplicationService.updateEvent(eventId, event));
     }
 
     @DeleteMapping("/delete/{eventId}")

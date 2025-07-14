@@ -9,4 +9,6 @@ public interface EventApplicationService {
 
     Event createEvent (CreateEventDto event);
 
+    Event updateEvent (Long id, CreateEventDto event);
+
 }
