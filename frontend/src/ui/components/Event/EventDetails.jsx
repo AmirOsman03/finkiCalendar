@@ -39,7 +39,7 @@ const EventDetailsPage = () => {
 
                     {/* Edit Button positioned above the card */}
                     {user && (
-                        <div className="flex justify-start mb-4">
+                        <div className="flex justify-center mb-4 space-x-4">
                             <button
                                 onClick={() => setEditDialogOpen(true)}
                                 className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center"
