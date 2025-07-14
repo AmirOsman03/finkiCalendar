@@ -1,4 +1,4 @@
-package mk.com.finkicalendar.backend.service;
+package mk.com.finkicalendar.backend.service.domain;
 
 import mk.com.finkicalendar.backend.model.Event;
 import mk.com.finkicalendar.backend.model.User;
@@ -8,14 +8,7 @@ import java.util.List;
 
 public interface EventService {
 
-    Event createEvent (
-            String title,
-            String description,
-            String location,
-            String laboratory,
-            LocalDateTime startTime,
-            LocalDateTime endTime
-    );
+    Event createEvent (Event event);
 
     Event updateEvent (
             Long id,

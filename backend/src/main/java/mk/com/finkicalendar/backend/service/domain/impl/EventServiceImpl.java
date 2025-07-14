@@ -1,10 +1,9 @@
-package mk.com.finkicalendar.backend.service.impl;
+package mk.com.finkicalendar.backend.service.domain.impl;
 
-import jakarta.transaction.Transactional;
 import mk.com.finkicalendar.backend.model.Event;
 import mk.com.finkicalendar.backend.model.User;
 import mk.com.finkicalendar.backend.repository.EventRepository;
-import mk.com.finkicalendar.backend.service.EventService;
+import mk.com.finkicalendar.backend.service.domain.EventService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,23 +20,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event createEvent (
-            String title,
-            String description,
-            String location,
-            String laboratory,
-            LocalDateTime startTime,
-            LocalDateTime endTime
-    ) {
-        Event event = new Event (
-                title,
-                description,
-                location,
-                laboratory,
-                startTime,
-                endTime
-        );
-        event.setParticipants(new ArrayList<>());
+    public Event createEvent (Event event) {
         return eventRepository.save(event);
     }
 

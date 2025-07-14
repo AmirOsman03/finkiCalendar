@@ -2,7 +2,7 @@ package mk.com.finkicalendar.backend.web.controllers;
 
 import mk.com.finkicalendar.backend.model.User;
 import mk.com.finkicalendar.backend.model.enums.Role;
-import mk.com.finkicalendar.backend.service.UserService;
+import mk.com.finkicalendar.backend.service.domain.UserService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package mk.com.finkicalendar.backend.service;
+package mk.com.finkicalendar.backend.service.domain;
 
 import mk.com.finkicalendar.backend.model.User;
 import mk.com.finkicalendar.backend.model.enums.Role;

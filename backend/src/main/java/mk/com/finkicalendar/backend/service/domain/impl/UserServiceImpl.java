@@ -1,10 +1,10 @@
-package mk.com.finkicalendar.backend.service.impl;
+package mk.com.finkicalendar.backend.service.domain.impl;
 
 import mk.com.finkicalendar.backend.model.User;
 import mk.com.finkicalendar.backend.model.enums.Role;
 import mk.com.finkicalendar.backend.model.exceptions.InvalidArgumentsException;
 import mk.com.finkicalendar.backend.repository.UserRepository;
-import mk.com.finkicalendar.backend.service.UserService;
+import mk.com.finkicalendar.backend.service.domain.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
