@@ -52,6 +52,12 @@ const CalendarView = () => {
                     Stay organized with your academic schedule and events
                 </p>
             </div>
+            <div className={"flex justify-center"}>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+                    {format(monthStart, "MMMM yyyy")}
+                </h2>
+            </div>
+
             <div className="grid grid-cols-7 gap-1">
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
                     <div key={day} className="text-sm text-center font-semibold text-gray-600">
